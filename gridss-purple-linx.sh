@@ -448,6 +448,9 @@ gripss_somatic_vcf=$gripss_dir/${tumour_sample}.gripss.somatic.vcf.gz
 gripss_somatic_filtered_vcf=$gripss_dir/${tumour_sample}.gripss.somatic.filtered.vcf.gz
 if [[ ! -f $gripss_somatic_vcf ]] ; then
 	write_status "Running GRIPSS"
+      if [[ $tumour_only != true ]] ; then
+            gripss_args="-reference $normal_sample $gripss_args"
+      fi
 	java -Xmx24G -cp ${gripss_jar} com.hartwig.hmftools.gripss.GripssApplicationKt \
 		-ref_genome ${ref_genome} \
 		-breakpoint_hotspot ${breakpoint_hotspot} \
