@@ -406,6 +406,7 @@ if [[ ! -f $gridss_driver_vcf ]] ; then
 		-b ${blacklist} \
 		-c ${gridss_properties} \
 		--repeatmaskerbed ${repeatmasker} \
+      --picardoptions VALIDATION_STRINGENCY=$validation_stringency \
 		--jvmheap $jvmheap \
 		$gridss_args \
 		${normal_bam} ${tumour_bam}
